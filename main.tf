@@ -31,7 +31,7 @@ module "ecs_cluster" {
   task_exec_iam_role_name                = format("%s-task-exec-role", local.cluster_name)
   task_exec_iam_role_description         = try(var.settings.iam.role_description, "ECS Task Execution IAM Role")
   create_task_exec_policy                = try(var.settings.iam.create_task_policy, false)
-  task_exec_iam_role_policies            = try(var.settings.iam.role_policies, [])
+  task_exec_iam_role_policies            = try(var.settings.iam.role_policies, {})
   task_exec_iam_role_use_name_prefix     = false
   task_exec_iam_statements               = try(var.settings.iam.role_statements, null)
   task_exec_secret_arns                  = try(var.settings.iam.task_exec_secret_arns, [])
