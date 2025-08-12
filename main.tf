@@ -9,6 +9,10 @@
 
 locals {
   cluster_name = var.name != "" ? var.name : format("%s-%s", var.name_prefix, local.system_name)
+  cluster_name_short = var.name != "" ? var.name : format("%s-%s", var.name_prefix, local.system_name_short)
+  role_name_long = format("%s-task-exec-role", local.cluster_name)
+  role_name_short = format("%s-task-exec-role", local.cluster_name_short)
+  role_name = length(local.role_name_long) > 64 ? local.role_name_short : local.role_name_long
 }
 
 module "ecs_cluster" {
@@ -28,7 +32,7 @@ module "ecs_cluster" {
   cluster_service_connect_defaults       = try(var.settings.cluster_service_connect_defaults, null)
   cluster_setting                        = try(var.settings.cluster_setting, null)
   create_task_exec_iam_role              = try(var.settings.iam.create, true)
-  task_exec_iam_role_name                = format("%s-task-exec-role", local.cluster_name)
+  task_exec_iam_role_name                = local.role_name
   task_exec_iam_role_description         = try(var.settings.iam.role_description, "ECS Task Execution IAM Role")
   create_task_exec_policy                = try(var.settings.iam.create_task_policy, false)
   task_exec_iam_role_policies            = try(var.settings.iam.role_policies, {})
