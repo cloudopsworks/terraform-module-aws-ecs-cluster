@@ -1,4 +1,4 @@
-name: Terraform Transit Gateway Module
+name: Terraform Module for AWS ECS Cluster
 #logo: logo/logo.jpg
 
 license: "APACHE2"
@@ -6,25 +6,25 @@ license: "APACHE2"
 copyrights:
   - name: "Cloud Ops Works LLC"
     url: "https://cloudops.works"
-    year: "2024"
+    year: "2025"
 
-github_repo: cloudopsworks/terraform-module-aws-vpc-setup
+github_repo: cloudopsworks/terraform-module-aws-ecs-cluster
 
 description: |-
   VPC Module for setting up transit gateway with ResourceAccessMananger support.
 
 # Introduction to the project
-#introduction: |-
+introduction: |-
 #  This is an introduction.
 
 # How to use this project
-#usage: |-
+usage: |-
 
 # Example usage
-#examples: |-
+examples: |-
 
 # How to get started quickly
-#quickstart: |-
+quickstart: |-
 
 include:
   - "docs/targets.md"
